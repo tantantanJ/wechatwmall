@@ -1,0 +1,71 @@
+
+<!-- HTTP静态资源访问路径配置 -->
+<!-- HTTPS静态资源访问路径配置-->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
+<title>PLUSYOOU</title>
+<link rel="stylesheet" href="style/main.css"/>
+<link rel="stylesheet" href="style/swiper-3.3.1.min.css">
+<script src="./zepto.min.js"></script>
+<script src="./utils.js"></script>
+<script src="./mall.js"></script>
+</head>
+<style>
+ .title span{border-left:5px solid #b61426;padding-left:2px}
+</style>
+<body>
+
+<!--公告-->
+<section class="notice" >
+    <div><a href="">公告</a></div>
+    <div class="">
+        <ul >
+            <li ><a href="">【系统公告】</a></li>
+        </ul>
+    </div>
+</section>
+
+<!--活动-->
+<section class="fence">
+    <header class="h">
+      <h3 class="title"><span style="">最新活动</span></h3>
+    </header>
+	<div id="slider" class="swiper-container-a">
+	    <div id="huoDong" class="list swiper-wrapper" >
+	    </div>
+        <div class="swiper-pagination-a" style="text-align:center">
+        </div>
+    </div>
+</section>
+
+<!-- 店铺 -->
+<section class="fence">
+    <header class="h">
+      <h3 class="title"><span>店铺推荐</span></h3>
+    </header>
+    <div class="swiper-container-b">
+      <div id="storeView" class="swiper-wrapper" ></div> 
+    </div>
+</section>
+
+<!--商品 -->
+<section class="fence">
+    <header class="h">
+      <h3 class="title"><span>商品推荐</span></h3>
+    </header>
+    <div id="productView"></div>
+</section>
+
+<div style="height:3.6em;"></div>
+<div class="nav">
+  <footer>
+
+  </footer>
+</div>
+<script src="./swiper-3.3.1.jquery.min.js"></script>
+</body>
+
+</html>

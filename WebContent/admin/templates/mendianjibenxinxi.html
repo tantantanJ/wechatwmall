@@ -1,0 +1,234 @@
+<fieldset style="border:1px solid silver; padding:40px; margin-top:2rem">
+	<legend><span id="MenDianMingCheng"></span>基本信息</legend>
+	<div class="need-space" id="MenDianDianZhao">
+		<label for="MenDianZhuTu" style="margin-bottom:0.5rem">店招图片(限一张)：</label>
+		<label class="button_circle button-tiny"><i class="icon-large"></i></label>
+		<div class="img-container ui-corner-all" style="width:360px;height:144px;margin-left:2rem;overflow:hidden">
+			<input type="hidden" class="maxTuPian" value="1"/>				
+			<input type="hidden" class="currentTuPian" />
+			<div id="allForMenDianZhuTu" style="display:inline-block">
+				<img class="imgBox ui-corner-all" style="width:360px;height:144px"/>
+				<input type="hidden" name="BnanerURL" class="imgName"/>
+				<input type="hidden" class="cropWidth" value="720"/>
+				<input type="hidden" class="cropHeight" value="287"/>							
+			</div>				
+		</div>
+	</div>
+		
+	<div class="need-more-space">
+		<div class="inline" id="MenDianLogo">
+			<label for="MenDianLogo" style="margin-bottom:0.5rem">门店LOGO(限一张)：</label>
+			<label class="button_circle button-tiny"><i class="icon-large"></i></label>
+			<div class="img-container ui-corner-all" style="width:88px;height:88px;margin-left:2rem;overflow:hidden">
+				<input type="hidden" class="maxTuPian" value="1"/>				
+				<input type="hidden" class="currentTuPian" />
+				<div id="allForLogo" style="display:inline-block">
+					<img class="imgBox ui-corner-all" style="width:88px;height:88px"/>
+					<input type="hidden" name="LogoURL" class="imgName"/>
+					<input type="hidden" class="cropWidth" value="175"/>
+					<input type="hidden" class="cropHeight" value="175"/>							
+				</div>				
+			</div>
+		</div>
+		<div class="inline" id="MenDianWeiXin" style="margin-left:8rem">
+			<label for="WeiXinTuPian" style="margin-bottom:0.5rem">微信名片(限一张)：</label>
+			<label class="button_circle button-tiny"><i class="icon-large"></i></label>
+			<div class="img-container ui-corner-all" style="width:88px;height:88px;margin-left:2rem;overflow:hidden">
+				<input type="hidden" class="maxTuPian" value="1"/>				
+				<input type="hidden" class="currentTuPian" />
+				<div id="allForWeiXinMingPian" style="display:inline-block">
+					<img class="imgBox ui-corner-all" style="width:88px;height:88px"/>
+					<input type="hidden" name="wxURL" class="imgName"/>
+					<input type="hidden" class="cropWidth" value="175"/>
+					<input type="hidden" class="cropHeight" value="175"/>							
+				</div>				
+			</div>
+		</div>
+	</div>
+	
+	<div style="margin-top:4rem">
+	    <label style="vertical-align:top" for="JianJie" class="baselength-label">店铺说明：</label>
+	    <textarea name="JianJie" maxlength="50" style="height:6rem; width: 25rem;"></textarea>
+	</div>
+	<div class="need-more-space">
+	   <select id="ZhuYingLeiBie" name="ZhuYingLeiBie" style="display:none;"></select>
+	   <div class="inline first-column">
+	       <label for="LeiBieMingCheng" class="baselength-label">货品类别：</label>
+	       <input name="LeiBieMingCheng" type="text" 
+	               class="baselength-input" style="width:25rem;" 
+	               onfocus="multiSelects(this, 'ZhuYingLeiBie');"/>
+	    </div>
+	</div>
+	<div class="need-more-space">
+    	<label for="DiZhi" style="vertical-align:top" class="baselength-label">店铺地址：</label>
+    	<textarea name="DiZhi" maxlength="50" style="height:6rem; width: 25rem;"></textarea>   
+	</div>
+	<div class="need-more-space">
+	    <label class="baselength-label">联系电话：</label>
+	    <input id="DianHua" name="DianHua" type="text" style="width:25rem;" />
+	</div>
+	<div style="margin-top:3rem; margin-right:2rem; text-align:right">
+		<button id="saveInfo" class="btn btn-primary">保存</button>
+	</div>
+</fieldset>
+    
+
+<script type="text/javascript">
+var mandianData;
+var LeiBieObjData;
+var forSelectionData = {};
+
+function image_click(source){
+        var dialogBox = document.createElement('div');
+        document.body.appendChild(dialogBox);
+        $(dialogBox).addClass('dialog-body');
+            $.ajax({
+                url : 'imgCropit.template',
+                type : 'GET',
+                dataType : 'text',
+                cache : true,
+                async : false,
+                success : function( data ) {
+                    $(dialogBox).html(data).attr('title', '图片修改');
+                    if (source=='img'){
+                        $('.image-editor').cropit('previewSize', { width: 400, height: 225 });
+                        
+                    }else{
+                        $('.image-editor').cropit('previewSize', { width: 250, height: 250 });
+                    }
+                    
+                    },
+                });
+           $(dialogBox).dialog ({
+               autoOpen : true,
+               resizable : true,
+               width: 650,
+               height: 460,
+               modal : true,
+               buttons: {
+                   '保存': function(){
+                       var imageData = $('.image-editor').cropit('export');
+                       imageData = imageData.replace(/\+/g,'%2B');
+                       imageData = imageData.replace(/\&/g,'%26');
+                       $.ajax({
+                           url:'uploadImg.do',
+                           type : 'POST',
+                           data: 'image-data=' + imageData,
+                           async: false,
+                           dataType : 'json',
+                           success : function( data ) {
+                               if (data.state==200){
+                                 if (source=='wx'){
+                                     $("#weixintupian img").attr('src',imageData);
+                                     $("#weixintupian input").val(data.result);
+                                 }  
+                                 if (source=='logo'){
+                                     $("#LogoImg img").attr('src',imageData);
+                                     $("#LogoImg input").val(data.result);
+                                 }  
+                                 if (source=='img'){
+                                     $("#dianImg img").attr('src',imageData);
+                                     $("#dianImg input").val(data.result);
+                                 }  
+                               } else {
+                                 alert("error");
+                               }
+                               
+                               },
+                       });
+                       closeDialog(dialogBox);
+                   },
+                   '退出': function(){
+                       closeDialog(dialogBox);
+                   },
+
+               },
+           });
+                
+}
+
+function save(formname){
+//     if (!checkValidation('form')) {
+//         return false;
+//     };
+        var s1 = compareChanged(mandianData, 'form');
+        if ($.isEmptyObject(s1) ) {
+            showupMessageInDialog('您没有对内容进行任何修改！' , '请知晓');
+            return false;
+        }
+        //修改表内容
+        if (!$.isEmptyObject(s1)) {
+            var updateResult = true;
+            s1.ID = mandianData.ID;
+            $.ajax ({
+                url:'updateRecord.do',
+                type:'POST',
+                dataType:'json',
+                data: 'domainName=mendian&dataStream='+ JSON.stringify(s1),
+//              async:false,
+                success: function( data ) {
+                    if (data.status!='OK') {
+                        ajaxJsonErrorHandler(data);
+                        updateResult = false;
+                    }
+                },
+            }); 
+            if (!updateResult) return false;            
+        }
+        message = '您已成功更新<br><strong>' + mandianData.MingCheng + '</strong>的信息！';
+        showupMessageInDialog( message , '请知晓');
+        return true;
+    
+}
+
+function compareChanged(theData, strCoverElem) {
+    var changedElems = {};
+    var inputElems = $(strCoverElem + ' input,' + strCoverElem + ' select,' + strCoverElem  + ' textarea').not('.ui-pg-input, .not-serialize, .not-serialize *');
+    for (var i = 0; i < inputElems.length; i++) {
+        if (theData[inputElems[i].name] == null) {
+            theData[inputElems[i].name] = '';
+        }
+        //对日期比较的特殊处理。
+        if ($(inputElems[i]).hasClass('date-picker-elem')) {
+            if (inputElems[i].value != theData[inputElems[i].name].substring(0,10)) {
+                changedElems[inputElems[i].name] = inputElems[i].value;
+            }
+            continue;
+        };
+        //对万位数字单元进行特殊处理。
+        if ($(inputElems[i]).hasClass('ten-thousand')) {
+            if (inputElems[i].value*10000 != theData[inputElems[i].name]) {
+                changedElems[inputElems[i].name] = inputElems[i].value*10000;
+            }
+            continue;
+        };
+        //对百分比单元进行特殊处理。
+        if ($(inputElems[i]).hasClass('percent')) {
+            if (inputElems[i].value/100 != theData[inputElems[i].name]) {
+                changedElems[inputElems[i].name] = inputElems[i].value/100;
+            }
+            continue;
+        };
+        //对checkbox元素比较的特殊处理。
+        if (inputElems[i].type=='checkbox') {
+            if (typeof theData[inputElems[i].name] == 'string') {
+                if (inputElems[i].checked.toString() != theData[inputElems[i].name]) {
+                    changedElems[inputElems[i].name] = inputElems[i].checked;
+                }                               
+            } else {
+                if (inputElems[i].checked != theData[inputElems[i].name]) {
+                    changedElems[inputElems[i].name] = inputElems[i].checked;
+                }               
+            }
+            continue;
+        }
+        if (inputElems[i].value != theData[inputElems[i].name]) {
+            changedElems[inputElems[i].name] = inputElems[i].value;
+        };
+    };
+    return changedElems;
+};
+
+
+</script>    
+  

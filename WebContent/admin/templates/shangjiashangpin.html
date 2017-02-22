@@ -1,0 +1,52 @@
+<input type="hidden" name="MenDianID"/>
+<input type="hidden" name="PaiXu"/>
+<div class="need-space">
+	<label for="MingCheng" class="baselength-label">商品名称：</label>
+	<input type="text" class="not-empty" style="width:26rem" name="MingCheng"/>
+</div>
+<div class="need-space">
+	<label for="YuanJia" class="baselength-label">标签价：</label>
+	<input type="text" class="baselength-input money" name="YuanJia"/>
+	<label for="JiaGe" class="twicelength-label">微店零售价：</label>
+	<input type="text" class="baselength-input money not-empty" name="JiaGe"/>
+</div>
+<div class="need-space">
+    <label for="LeiBieID" class="baselength-label">商品类别：</label>
+    <select name="LeiBieID" class="not-empty" style="width:14.5rem"></select>
+	<label for="DanWei" class="baselength-label">单位：</label>
+	<input type="text" class="halflength-input not-empty" name="DanWei"/>
+</div>
+<div style="margin-left:0.7rem">
+	<div class="need-space" id="ShangPinZhuTu">
+		<label for="ShangPinZhuTu" style="margin-bottom:0.5rem">商品主图(限一张)：</label>
+		<label class="button_circle button-tiny"><i class="icon-large"></i></label>
+		<div class="img-container ui-corner-all" style="width:180px;height:180px;margin-left:10rem;overflow:hidden">
+			<input type="hidden" class="maxTuPian" value="1"/>				
+			<input type="hidden" class="currentTuPian" />
+			<div id="allForShangPinZhuTu" style="display:inline-block">
+				<img class="imgBox ui-corner-all" style="width:180px;height:180px"/>
+				<input type="hidden" class="imgName"/>
+				<input type="hidden" class="cropWidth" value="720"/>
+				<input type="hidden" class="cropHeight" value="720"/>							
+			</div>				
+		</div>
+	</div>
+	<div class="need-space">
+		<label for="JianJie">商品主宣传语(60字)：</label><br/>
+		<textarea name="JianJie" maxlength="60"
+			style="height:4rem; width:30rem;margin-left:2rem"></textarea>
+	</div>
+	<div class="need-space">
+		<label for="ShuoMing">商品详细说明(200字)：</label><br/>
+		<textarea name="ShuoMing" maxlength="200"
+			style="height:6rem; width:30rem;margin-left:2rem"></textarea>
+	</div>
+	<div class="need-space">
+		<label for="ShangPinMingXiTu">商品明细图片(多张)：</label><br/>
+		<div id="ShangPinMingXiTuContainer" class="img-container ui-corner-all" style="width:360px; height:100px; margin-left:2rem; padding-top:0.5rem">
+			<input type="hidden" class="maxTuPian" value="-1"/>				
+			<input type="hidden" class="currentTuPian" />
+			
+		</div>
+	</div>
+</div>

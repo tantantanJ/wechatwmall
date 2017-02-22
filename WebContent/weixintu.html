@@ -1,0 +1,49 @@
+
+<!-- HTTP静态资源访问路径配置 -->
+<!-- HTTPS静态资源访问路径配置-->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
+<title>PLUSYOOU</title>
+<link rel="stylesheet" href="style/main.css"/>
+<script src="./zepto.min.js"></script>
+<script src="./utils.js"></script>
+<style>
+body{background-color:white}
+.container{
+        width:100%;
+        height:100%;
+}
+.imgdiv{text-align:center;}
+.imgdiv ul{font-size:1em;line-height:2}
+.imgdiv img{padding-top:8em;width:15em;height:15em}
+</style>
+</head>
+
+<body>
+   <div class="container">
+     <div class="imgdiv">
+		       <img class="weixintu">
+		       <ul>
+		         <li><strong>长按或扫描二维码关注店铺</strong></li>
+		         <li>或者拨打<a href="" style="color:#32a3d3!important" class="dianhua"><strong></strong></a></li>
+		         <li >或者<a href="mall.html" style="color:#32a3d3!important" ><strong>回到主页</strong></a></li>
+		       </ul>
+	   </div>	       
+   </div>
+</body>
+<script >
+$(function(){
+	var wxtu=GetQueryString("wxid");
+	var dianhuahao=GetQueryString("dianhuaid");
+	 $(".weixintu").attr("src",wxtu);   
+	 $(".dianhua").attr("href","tel:"+dianhuahao);   
+	 $(".dianhua strong").append(dianhuahao);   
+});
+
+</script>
+
+
+</html>

@@ -1,0 +1,76 @@
+    <div class="container"> 
+        <div class="panel panel-primary">
+           <div class="panel-heading">店面当日访问量统计</div>
+           <table class="table">
+              <th>查看项目</th><th>访问次数 </th><th>停留合计(秒) </th>
+              <tr><td>店面页：</td><td id="DianMian"></td><td id="DianMianShiChang"></td></tr>
+              <tr><td>商品页：</td><td id="ShangPin"></td><td id="ShangPinShiChang"></td></tr>
+              <tr><td>活动页：</td><td id="HuoDong"></td><td id="HuoDongShiChang"></td></tr>
+           </table>
+        </div>
+    
+        <div class="panel panel-primary">
+           <div class="panel-heading">
+              <h3 class="panel-title">最新访问日志</h3>
+           </div>
+           <div id="view-area" class="panel-body">
+           </div>
+        </div>  
+    </div>
+
+<script type="text/javascript">
+$(function(){
+    $.ajax({
+        url : '../getQueryResult.do',
+        type : 'POST',
+        data: 'infoType=门店当天访问日志&engine=static',
+        async: true,
+        dataType : 'json',
+        success : function( data ) {
+            returnData = data.rows;
+            if(returnData!=undefined && returnData.length!=0){
+                htmlStr="";
+                htmlStr="<div><ul>";
+                for (var i = 0; i <returnData.length ; i++) {
+                    htmlStr=htmlStr+"<li>"+(returnData[i].ShiJian)+" "+(returnData[i].YongHuLeiBie);
+                    if ((returnData[i].HeadimgURL) != ''){htmlStr=htmlStr+"<img style='display:inline-block;width:1.5em;height:1.5em;' src='"+(returnData[i].HeadimgURL)+"' />"};
+                    htmlStr=htmlStr+(returnData[i].NickName)
+                            +" "+(returnData[i].DongZhuo)+" "
+                            +(returnData[i].StoreName)
+                            +(returnData[i].ProduceName)
+                            +(returnData[i].HuoDongName)
+                            +(returnData[i].LeiBieName)
+                            +(returnData[i].FuJiaCanShu)
+                            +(returnData[i].TingLiuShiChang)
+                            +"</li>";
+                };
+                htmlStr=htmlStr+"</ul></div>";
+                $("#view-area").html(htmlStr);  
+            };
+        },
+    });
+
+    $.ajax({
+        url : '../getQueryResult.do',
+        type : 'POST',
+        data: 'infoType=门店当天统计&engine=static',
+        async: true,
+        dataType : 'json',
+        success : function( data ) {
+            returnData = data.rows;
+            if(returnData!=undefined && returnData.length!=0){
+                $("#DianMian").append(returnData[0].DianMian );
+                $("#ShangPin").append(returnData[0].ShangPin );
+                $("#HuoDong").append(returnData[0].HuoDong );
+                $("#DianMianShiChang").append(returnData[0].DianMianShiChang );
+                $("#ShangPinShiChang").append(returnData[0].ShangPinShiChang );
+                $("#HuoDongShiChang").append(returnData[0].HuoDongShiChang );
+            };
+        },
+    });
+    
+})
+
+
+</script>    
+        

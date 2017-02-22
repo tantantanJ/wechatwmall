@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>系统错误</title>
+<script>
+	window.onload = function(){
+		var params= window.location.search.substring(1);
+		var errCode = '00';
+		if (params != '' && params.indexOf('errCode=') != -1) {
+			errCode = params.substring(params.indexOf('errCode=') + 8, params.length);
+		}
+		
+		document.getElementById('error_code').innerHTML = '&nbsp;&nbsp;错误代码：' + errCode;
+		document.getElementById('action_hint').innerHTML = '请通知系统管理员<br/>或与普赖优软件（<a target="_blank" href="http://www.plusyoou.com?errCode="' + errCode + '>www.plusyoou.com</a>）联系获取技术支持';
+		switch (errCode) {
+		case '00':
+			document.title = '系统错误';
+			document.getElementById('error_msg').innerHTML = '系统发生严重错误';
+			break;
+		case '01':
+			document.title = '许可错误';
+			document.getElementById('error_msg').innerHTML = '系统许可配置错误';
+			break;		
+		case '02':
+			document.title = '数据库错误';
+			document.getElementById('error_msg').innerHTML = '不能正确连接数据库';
+			break;		
+		case '03':
+			document.title = '数据库错误';
+			document.getElementById('error_msg').innerHTML = '不能正确记录登录信息';
+			break;		
+		case '04':
+			document.title = '许可超限';
+			document.getElementById('error_msg').innerHTML = '已达许可上限';
+			document.getElementById('action_hint').innerHTML = '请通知系统管理员<br/>或与普赖优软件（<a target="_blank" href="http://www.plusyoou.com?errCode="' + errCode + '>www.plusyoou.com</a>）联系增加许可事宜';
+			break;		
+		}
+	};
+</script>
+</head>
+<body>
+	<div style="height: 20%; margin-top: 3em; font-size: 14px"
+		class="row-divider">
+		<div class="box-leftsection no-left-margin inline"
+			style="width: 38%; text-align: right">
+			<img src="../resource/error.png">
+		</div>
+		<div class="box-rightsection no-left-margin inline"
+			style="width: 60%; line-height: 2em">
+			<h1 id="error_msg"></h1>
+			<p id="error_code" style="color:red;"></p>
+			<h2 id="action_hint"></h2>
+		</div>
+	</div>
+</body>
+</html>

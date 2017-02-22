@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+	
+	<link rel="stylesheet" href="css/adminless.css"/>
+	<link rel="stylesheet" href="css/themes/default/jquery-ui-theme.css"/>
+	<link rel="stylesheet" href="css/admin.css">
+	<link rel="shortcut icon" href="/favicon.ico">
+	<link rel="stylesheet" href="css/ui.jqgrid.css">
+	<link rel="stylesheet" href="css/ui.jqgrid-bootstrap.css">
+</head>
+<body>
+	<div>
+		<nav class="navbar navbar-inverse navbar-fixed-top">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<a class="navbar-brand" id="BrandTitle">
+						<span>
+							<span id="MenDianMingCheng" class="label-as-badge badge-info"></span>微店后台管理系统
+						</span>
+					</a>
+				</div>
+				<div class="text-center">
+					<span id="TitleOfOperation" class="operation-title"></span><span id="operationSName" style="display:none"></span>
+				</div>
+				<div class="navbar-right">
+					<span id="availableActions"></span>
+					<span id="itemSearch" class="navbar-form" style="margin-left:100px; visibility:hidden">
+						<input type="text" class="form-control">
+					</span>
+				</div>								
+			</div>
+		</nav>
+		<div class="row flexMainContainer_Row">
+			<div class="col-sm-1 col-md-1 col-lg-1 sidebar">
+				<ul id="navMenu" class="nav nav-list">
+					<li><a href="javascript: void MenDianJiBenXinXiSetup();">门店信息</a></li>
+					<li><a href="javascript: void MenDianZhuangXiu();">门店装修</a></li>
+					<li><a href="javascript: void MenDianChanPingSetup();">上架产品</a></li>
+					<li><a href="javascript: void YingXiaoHuoDongSetup();">活动管理</a></li>
+					<li><a href="javascript: void ShuJuTongJi();">统计数据</a></li>
+					<li class="nav-divider"></li>
+					<li class="never-active"><a href="javascript: void changePWD();">更改密码</a></li>
+					<li class="never-active"><a href="javascript: void exitSystem();">安全退出</a></li>
+         		</ul>
+			</div>
+			<div id="operationArea" class="flexExpanding flexInnerContainer_Row col-sm-11 col-sm-offset-1 
+				col-md-11 col-md-offset-1 col-lg-11 col-lg-offset-1" style="margin-bottom:60px">
+				<div>
+					<h2>在商城注册的门店管理人员：</h2>
+					<br/>
+					<div style="margin-bottom:1rem">通过各自的用户号和密码，登录到此后台页面，</div>
+					<div style="margin-left:1rem"><i class="icon-check"></i><div class="hint-box">可对自己门店的信息进行修改，更换店招等</div></div>
+					<div style="margin-left:1rem"><i class="icon-check"></i><div class="hint-box">可对自己门店进行装修，美化门店的显示风格</div></div>
+					<div style="margin-left:1rem"><i class="icon-check"></i><div class="hint-box">可增加、删除上架商品，修改商品信息、图片及价格</div></div>
+					<div style="margin-left:1rem"><i class="icon-check"></i><div class="hint-box">可发布活动及相关的活动商品</div></div>
+					<div style="margin-left:1rem"><i class="icon-check"></i><div class="hint-box">查看门店的访客数据，获取相关的访客行为统计</div></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+	<script type="text/javascript" src="scripts/jquery.js"></script>
+	<script type="text/javascript" src="scripts/bootstrap.js"></script>
+	<script type="text/javascript" src="scripts/jquery-ui.js"></script>
+	<script type="text/javascript" src="scripts/jquery.ui.datepicker-zh-CN.js"></script>
+	<script type="text/javascript" src="scripts/md5.js"></script>
+	<script type="text/javascript" src="scripts/pwdUtils.js"></script>
+	<script type="text/javascript" src="scripts/jquery.jqGrid.js"></script>
+	<script type="text/javascript" src="scripts/grid.locale-cn.js"></script>
+	<script type="text/javascript" src="scripts/utils.js"></script>
+	<script type="text/javascript" src="scripts/manage.js"></script>
+</html>

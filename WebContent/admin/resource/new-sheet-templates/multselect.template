@@ -1,0 +1,13 @@
+<div id="MultSelect" style="width:410px; margin: auto">
+    <div style="display:inline-block; width:200px; text-align:center">
+        <p>待选区</p>
+        <select id="selectL" name="selectL" multiple="multiple" style="width:180px; height:120px">
+        </select>
+    </div>
+    <div style="display:inline-block; width:200px; text-align:center">
+        <p>已选区</p>
+        <select id="selectR" name="selectR" multiple="multiple" style="width:180px; height:120px">
+        </select>
+     </div>
+</div>
+  

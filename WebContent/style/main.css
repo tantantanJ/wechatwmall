@@ -1,0 +1,150 @@
+@CHARSET "UTF-8";
+@media all and (min-width:721px){html{font-size:62.5%}}
+@media all and (max-width:720px){html{font-size:62.5%}}
+@media all and (max-width:640px){html{font-size:55.556%}}
+@media all and (max-width:540px){html{font-size:46.875%}}
+@media all and (max-width:480px){html{font-size:41.667%}}
+@media all and (max-width:432px){html{font-size:37.5%}}
+@media all and (max-width:414px){html{font-size:35.9375%}}
+@media all and (max-width:400px){html{font-size:34.722%}}
+@media all and (max-width:375px){html{font-size:32.551%}}
+@media all and (max-width:360px){html{font-size:31.25%}}
+@media all and (max-width:340px){html{font-size:29.514%}}
+@media all and (max-width:320px){html{font-size:27.778%}}
+html,body,div,h1,h2,h3,h4,h5,h6,p,ol,ul,li,section{
+	margin:0;padding:0;border:0;outline:0
+}
+body{
+	font-family:sans-serif,Helvetica,Arial,'Lucida Grande',Verdana;word-wrap:break-word;
+	line-height:1.2;
+	min-width:320px;
+	background-color:#f7f7f7;
+	font-size:2.5em;max-width:720px;margin:0 auto;color:#333;
+	scrollbar-y="false";
+}
+::-webkit-scrollbar{
+  display: none;
+}
+img{
+	border:0;max-width:100%;vertical-align:top;
+}
+ol,ul{
+	list-style:none
+}
+a {
+	display:block;
+    text-decoration: none;
+    color: #333;
+}
+li{list-style-type:none;}
+.yincang{display:none}
+/* 底部导航栏 */
+.nav{border-top:1px solid #EEE;box-shadow: 0 0 10px 0 rgba(155,143,143,0.6);background-color:#fff;position:fixed;bottom:0;left:0;right:0;max-width:720px;z-index:100;margin:0 auto}
+
+.nav li{float:left;width:33.333%;}
+.nav li a{display:block;padding-top:.5em;text-align:center}
+.nav li.active a{color:#ca151e}
+.nav li a span{height:1.9em;line-height:1.9em} 
+.nav img{height:2em;}
+.nav-fixed{position:fixed;z-index: 100;}
+
+/* 公告 */
+.notice{border-top:;background-color:#fff;height:4em}
+.notice div:first-child{width:5.1em;height:100%;float:left;line-height:4em;text-align:center;position:relative}
+.notice div:first-child a{display:block;font-size:1.4em;font-weight:700;height:100%}
+.notice div:first-child:before{content:'';position:absolute;right:0;top:50%;margin-top:-3.6em;height:7.2em;border-right:1px solid #d9d9d9;transform:scale(0.33);-webkit-transform:scale(0.33)}
+.notice div:last-child{padding-right:1em;height:4em;line-height:4em;vertical-align:middle;position:relative;padding-left:3.3em;overflow:hidden}
+.notice div:last-child li a{display:block;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;font-size:1.2em;color:#666}
+
+/* 网格 */
+.fence{margin:.8em 0 1em 0}
+.fence a{padding:1em;display:block;text-align:center}
+.more a{padding:.4em}
+.fence .h{position:relative}
+.fence .h .title{padding-left:1em;line-height:2.6}
+.fence ul{width:100%;display:box;display:-webkit-box;display:-moz-box;display:-webkit-flex;display:flex}
+.fence ul>li{-webkit-box-flex:1;-moz-box-flex:1;flex:1;width:50%;position:relative}
+.fence{background-color:#fff;overflow:hidden}
+.fence li{border-right:1px solid #f7f7f7;border-bottom:1px solid #f7f7f7;box-sizing:border-box;margin-bottom:-1px;margin-right:-1px}
+.fence{margin-top:0}
+.fence .productname{text-align: left;text-overflow:ellipsis;white-space:nowrap;overflow:hidden;font-size:1.4em;line-height:1.8;padding:.5em 0 0 0;}
+.fence .productprice{text-align: left;text-overflow:ellipsis;white-space:nowrap;overflow:hidden;font-size:1.4em;line-height:1.8;color:#c40000}
+.fence .oldprice{text-align: left;text-overflow:ellipsis;white-space:nowrap;overflow:hidden;font-size:1em;line-height:1.8;padding-left:1em;color:#c0c0c0;text-decoration:line-through;}
+.fence .storename{text-overflow:ellipsis;white-space:nowrap;overflow:hidden;font-size:1em;line-height:1.8}
+#productXX h3{padding-left:.9em;}
+#productXX p{padding-left:.9em;}
+#productXX p:last-child{padding-left:1.4em;}
+.title span{border-left: 5px solid #b61426;}
+.list1 li{width:100%}
+.list2 li{width:50%}
+.list3 li{width:33.3%}
+.list4 li{width:25%}
+.list2 img{height:6em;width:16em;margin:0 auto}
+.list3 img{height:6em;width:7.5em;margin:0 auto}
+.list4 img{height:6em;width:7em;margin:0 auto;}
+#huoDong img{height:20em;width:100%}
+#storeView img{height:7em;width:7.5em;margin:0 auto;}
+#productView img{height:13em;width:17em;margin:0 auto;}
+#huoDong a{padding:0}
+.active h3{font-size:1.5em;line-height:1.5;background-color:#d50000;filter:alpha(Opacity=80);-moz-opacity:1;opacity:1;color:#ffffff}
+.active p{font-size:1.5em;font-weight:400;font-style: normal;padding:.5em 1em .5em 1em}
+/* 商品页面 */
+.detailshead{border-bottom:1px solid #dfdfdf;margin-bottom:1em}
+.details{padding:0em 1em .5em 1em;font-size: 1.5em;color: #888;}
+#productSM li{width:100%}
+#productSM img{width:100%}
+#productTP img{width:100%}
+.shaixuan{text-align:center;}
+
+/* 搜索栏 */
+.search{background-color:#ffffff;box-shadow: 0 0 10px 0 rgba(155,143,143,0.6);position: fixed;z-index: 100;width:100%}
+.storeSearch .h .title{padding-left:1em;line-height:2.6}
+.storeInfo p:first-child{margin-bottom:.6em;}
+.storeInfo p:last-child{color:#32a3d3;line-height:2em}
+.storeList{width:100%;display:box;display:-webkit-box;display:-moz-box;display:-webkit-flex;padding:.5em 0 .6em 0;border-bottom:1px solid #f0f0f0;}
+.storeLogo{-webkit-box-flex:1;-moz-box-flex:1;flex:1}
+.storeLogo img{height:6.5em;width:6.5em;margin-left:.5em}
+.storeInfo{-webkit-box-flex:2;-moz-box-flex:2;flex:2;margin:0em 0 0 1em;}
+.searchBar{margin-right:1em;}
+.searchBar{ border: 1px solid rgba(0, 0, 0, 0.1);border-radius: 2px;color: #2b2b2b;padding:.2em .5em .2em .5em;}
+.searchBtn{border:huodongsection 1px solid rgba(0, 0, 0, 0.1);padding:.2em .5em .2em .5em;}
+.search div:first-child{width:5.1em;height:100%;float:left;line-height:4em;text-align:center;position:relative}
+.search div:first-child span{display:block;font-size:1.4em;font-weight:700;height:100%}
+.search div:first-child:before{content:'';position:absolute;right:0;top:50%;margin-top:-3.6em;height:7.2em;border-right:1px solid #d9d9d9;transform:scale(0.33);-webkit-transform:scale(0.33)}
+.search div:last-child{padding-right:1em;height:4em;line-height:4em;vertical-align:middle;position:relative;padding-left:2em;overflow:hidden}
+.search div:last-child li a{display:block;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;font-size:1.2em;color:#666}
+
+#shangpin img{height:10em;width:10em;margin:0 auto;padding-top:.5em}
+.choosebox li a.current{background-color: #ffffff;} 
+.sousuo-left {z-index: 9;width: 15%;height: 100%;overflow:  auto;float: left;background-color: #efefef;}
+.sousuo-right {z-index: 8;width: 85%;float: right;height: 100%;overflow: auto;}
+.sousuo-right .h{background-color: #efefef;border-bottom:1px solid #b0b0b0;}
+.sousuo-left a {display: block;line-height: 3.6;vertical-align: middle;overflow: hidden;word-break: break-all;color: #333!important;}
+.sousuo {position: fixed;top: 4em;bottom: 0;left: 0;right: 0;max-width: 720px;margin: 0 auto;background-color: #fff;} 
+.jindianBtn{text-align: center;padding: 0 .5em;height: 2em;line-height: 2.2em;border-radius: .5em;border: 1px solid #b2b2b2;display: inline-block;margin-bottom: .8em;margin-right: .8em;background-color: #fff;color: #333;}
+
+/* 店铺页面 */
+.storebanner ul{ align-items: center;}
+.logo img{width:7em;height:7em;}
+.storebanner{display:block;background-repeat:no-repeat;height:auto;padding:4.5em 0 0 0;}
+.storebanner li{border:0;height:auto;}
+.storebanner_name{color:#ffffff;font-size:1.5em}
+.storebanner_loc{color:#ffffff;line-height:2em}
+.storedetails{padding:0em 1em .5em 1em;font-size: 1.1em;color: #888;} 
+#storeXX{width:100%;display:box;display:-webkit-box;display:-moz-box;display:-webkit-flex;}
+.logo{-webkit-box-flex:1;-moz-box-flex:1;flex:1}
+.logoinfo{-webkit-box-flex:2;-moz-box-flex:2;flex:2;padding-top:2em}
+
+.loc{padding-top:.6em;width:.8em;height:.8em}
+
+/* 活动页面 */
+#huodongXX img{height:20em;width:100%}
+.huodongLogo img{height:10em;width:17em;margin:0 auto;}
+#huodongshangpin li{border-right: 0px;border-bottom:0px;background-color:white;margin:.5em}
+#huodongshangpin li>p{background-color:#ac203a}
+#huodongshangpin a{padding:0}
+.huodongtitle p:first-child{font-size:2em;line-height:1.8}
+.huodongtitle p:last-child{font-size:1.2em;line-height:2.4;font-weight:bold}
+.huodongName{font-size:1.2em;line-height:2;font-weight:bold;}
+.huodongPrice{font-size:1.2em;color:#c40000;padding-bottom:.5em}
+.huodongoldPrice{font-size:1em;text-decoration:line-through;color:#c0c0c0;padding-bottom:.5em}

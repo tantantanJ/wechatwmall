@@ -1,0 +1,32 @@
+<input type="hidden" name="StoreID"/>
+<div class="need-space">
+	<label for="MingCheng" class="baselength-label">活动名称：</label>
+	<input type="text" class="not-empty" style="width:26rem" name="MingCheng"/>
+</div>
+<div class="need-more-space">
+	<label for="StartDate" class="baselength-label">开始日期：</label>
+	<input type="text" class="baselength-input date-picker-elem not-empty" name="StartDate"/>
+	<label for="EndDate" class="twicelength-label">结束日期：</label>
+	<input type="text" class="baselength-input date-picker-elem not-empty" name="EndDate"/>
+</div>
+<div style="margin-left:0.7rem; margin-top:1rem">
+	<div class="need-space" id="HuoDongZhuTu">
+		<label for="HuoDongZhuTu" style="margin-bottom:0.5rem">宣传图片(限一张)：</label>
+		<label class="button_circle button-tiny"><i class="icon-large"></i></label>
+		<div class="img-container ui-corner-all" style="width:360px;height:360px;margin-left:2rem;overflow:hidden">
+			<input type="hidden" class="maxTuPian" value="1"/>				
+			<input type="hidden" class="currentTuPian" />
+			<div id="allForHuoDongZhuTu" style="display:inline-block">
+				<img class="imgBox ui-corner-all" style="width:360px;height:360px"/>
+				<input type="hidden" name="ImgURL" class="imgName"/>
+				<input type="hidden" class="cropWidth" value="720"/>
+				<input type="hidden" class="cropHeight" value="720"/>							
+			</div>				
+		</div>
+	</div>
+	<div class="need-space">
+		<label for="ShuoMing">活动说明(100字)：</label><br/>
+		<textarea name="ShuoMing" maxlength="100"
+			style="height:6rem; width:30rem;margin-left:2rem"></textarea>
+	</div>
+</div>

@@ -1,0 +1,91 @@
+<h3>
+<span id="operationName"></span>操作要点：
+</h3>
+<div id="hint-for-add" class="hint-line">
+	<label class="hint-bullet"><i class="icon-pencil"></i></label><div class="hint-box">点击上方<label class='button_circle button-tiny'>
+	<i class='icon-plus icon-large'></i></label>增加新的<span class="operationShortName"></span></div>
+</div>
+<div id="hint-for-edit" class="hint-line">
+	<label class="hint-bullet"><i class="icon-pencil"></i></label><div class="hint-box">在左侧选中一条
+	<span class="operationShortName"></span>记录后，点击上方
+	<label class='button_circle button-tiny'><i class='icon-edit icon-large'></i></label>可对该条记录进行修改</div>
+</div>
+<div id="hint-for-del" class="hint-line">
+	<label class="hint-bullet"></label><i class="icon-pencil"></i><div class="hint-box">在左侧选中一条
+	<span class="operationShortName"></span>记录后，点击上方
+	<label class='button_circle button-tiny'><i class='icon-trash icon-large'></i></label>可删除该条记录</div>
+</div>
+<div id="hint-for-troggle" class="hint-line">
+	<label class="hint-bullet"><i class="icon-pencil"></i></label><div class="hint-box">在左侧选中一条
+	<span class="operationShortName"></span>记录后，点击上方<label class='button_circle button-tiny'><i class='icon-off icon-large'></i></label>
+	可使该记录在<span id="troggleStsHint"></span>状态间进行转换</div>
+</div>
+<div id="hint-for-moveup" class="hint-line">
+	<label class="hint-bullet"><i class="icon-pencil"></i></label><div class="hint-box">在左侧选中一条
+	<span class="operationShortName"></span>记录后，点击上方<label class='button_circle button-tiny'><i class='icon-arrow-up icon-large'></i></label>
+	将使该记录在<span id="moveupHint"></span>显示列表中的显示排名前进一位</div>
+</div>
+<div id="hint-for-movedown" class="hint-line">
+	<label class="hint-bullet"><i class="icon-pencil"></i></label><div class="hint-box">在左侧选中一条
+	<span class="operationShortName"></span>记录后，点击上方<label class='button_circle button-tiny'><i class='icon-arrow-down icon-large'></i></label>
+	将使该记录在<span id="movedownHint"></span>显示列表中的排名下降一位</div>
+</div>
+<div id="hint-for-Extra1" class="hint-line"></div>
+<div id="hint-for-Extra2" class="hint-line"></div>
+<div id="hint-for-Extra3" class="hint-line"></div>
+<script>
+// $(function() {
+	$('#operationName').html($('#TitleOfOperation').html());
+	$('.operationShortName').html($('#operationSName').html());
+	if ($('#add_Btn').length > 0) {
+		$('#hint-for-add').show();
+		$('#add_Btn').bind('click', function(){dispatchActions($('#operationSName').html(), '新增');})
+	} else {
+		$('#hint-for-add').hide();		
+	}
+	if ($('#edit_Btn').length > 0) {
+		$('#hint-for-edit').show();
+		$('#edit_Btn').bind('click', function(){dispatchActions($('#operationSName').html(), '编辑');})
+	} else {
+		$('#hint-for-edit').hide();		
+	}
+	if ($('#del_Btn').length > 0) {
+		$('#hint-for-del').show();
+		$('#del_Btn').bind('click', function(){dispatchActions($('#operationSName').html(), '删除');})
+	} else {
+		$('#hint-for-del').hide();		
+	}
+	if ($('#troggle_Btn').length > 0) {
+		$('#hint-for-troggle').show();
+		$('#troggle_Btn').bind('click', function(){dispatchActions($('#operationSName').html(), '转换状态');})
+	} else {
+		$('#hint-for-troggle').hide();		
+	}
+	if ($('#moveup_Btn').length > 0) {
+		$('#hint-for-moveup').show();
+		$('#moveup_Btn').bind('click', function(){dispatchActions($('#operationSName').html(), '上移');})
+	} else {
+		$('#hint-for-moveup').hide();		
+	}
+	if ($('#movedown_Btn').length > 0) {
+		$('#hint-for-movedown').show();
+		$('#movedown_Btn').bind('click', function(){dispatchActions($('#operationSName').html(), '下移');})
+	} else {
+		$('#hint-for-movedown').hide();		
+	}
+
+	if ($('#operationSName').html() === '门店基本信息') {
+		$('#hint-for-Extra1').html('<label class="hint-bullet"><i class="icon-ok"></i></label>' 
+			+ '<div class="hint-box">门店名称由商场管理员设定，门店店长不能更改</div>')
+		$('#hint-for-Extra2').html('<i class="icon-ok"></i></label><div class="hint-box">门店其他信息，可由门店店长自行修改</div>');
+	} else if ($('#operationSName').html() === '工程构成类目') {
+		$('#hint-for-Extra1').html('<i class="icon-search"></i>在上方快查区，使用构成类目名称中的任意片段信息可模糊查询工程构成类目<br/>')
+		$('#hint-for-Extra2').html('');
+		$('#hint-for-Extra3').html('');			
+	} else {
+		$('#hint-for-Extra1').html('')
+		$('#hint-for-Extra2').html('');
+		$('#hint-for-Extra3').html('');					
+	}
+// });
+</script>

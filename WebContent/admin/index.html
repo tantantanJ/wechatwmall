@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Cache-Control" content="no-cache">
+<meta http-equiv="Expires" content="0">
+
+<title>基本资料设置</title>
+<link type="text/css" rel="stylesheet" href="css/ui.jqgrid.css" />
+<link type="text/css" rel="stylesheet" href="css/manage.css" />
+
+</head>
+<body>
+	<div class="page-header">
+		<p id="sheetTitle"></p>
+	</div>
+
+    <div id="nav" class="nav">
+    </div>
+
+    <div id="input-area" >
+        <div>
+            <label>店铺地址：</label>   <input id="DiZhi" type="text" />    
+        </div>
+        <div>
+            <label>主营产品：</label>   <input type="text" /> <input id="ZhuYingLeiBie" type="hidden"> 
+        </div>
+        <div>
+            <label>店铺说明：</label>  <input id="JianJie" type="text" />
+        </div>
+        <div>
+            <label>联系电话：</label>     <input id="DianHua" type="text" />
+        </div>
+        <div>
+            <label>微信名片：</label>
+            <div id="weixintupian" class="avatar-view" title="微信名片">
+              <img src="" alt="微信名片" onclick="image_click()" />
+              <input id="wxURL" type="hidden">
+            </div>
+        </div>
+        <div>
+            <label>LOGO：</label>
+            <div class="avatar-view" title="店面LOGO">
+              <img src="" alt="店面LOGO"  />
+            </div>
+        </div>
+        <div>
+            <label>店招：</label>
+            <div class="avatar-view" title="店招图片">
+              <img src="" alt="店招图片"  />
+            </div>
+        </div>
+
+
+    </div>
+
+  <script src="scripts/jquery.js"></script>
+  <script src="scripts/jquery-ui.js"></script>
+
+  <script src="scripts/manage.js"></script> 
+
+<script type="text/javascript">
+
+
+$(function(){
+	
+	InitNav();
+
+    $.ajax({
+        url : 'getinfo.do',
+        type : 'GET',
+        data : 'infoType=门店信息&id=1',
+        dataType : 'json',
+        async : false,
+        success : function( data ) {
+            if (ajaxJsonErrorHandler(data)) {
+                returnData = data.rows;
+                $("#DiZhi").val(returnData[0].DiZhi);
+                $("#DianHua").val(returnData[0].DianHua);
+                $("#JianJie").val(returnData[0].JianJie);
+
+                $("#ZhuYingLeiBie").val(returnData[0].ZhuYingLeiBie);
+                
+                
+                $("#weixintupian").html("<img src='../"+returnData[0].wxURL+"' alt='微信名片' onclick='image_click()' />")
+            } else {
+                
+            }
+
+        },
+    });
+
+//    jQueryUIInit();
+//     if (GetQueryString("module") != null){
+    	
+//         $.getScript('scriptsrc/'+GetQueryString("module")+'.js',function(){  
+//             InitWebPage();
+//           });
+//     };
+
+})
+
+function image_click(){
+        var dialogBox = document.createElement('div');
+        document.body.appendChild(dialogBox);
+        $(dialogBox).addClass('dialog-body');
+            $.ajax({
+                url : 'imgCropit.template',
+                type : 'GET',
+                dataType : 'text',
+                cache : true,
+                async : false,
+                success : function( data ) {
+                    $(dialogBox).html(data).attr('title', '图片修改');
+                    },
+                });
+           $(dialogBox).dialog ({
+               autoOpen : true,
+               resizable : true,
+               height: 460,
+               width: 460,
+               modal : true,
+               buttons: {
+                   '保存': function(){
+                       if(save('formDialog')){
+                           closeDialog(dialogBox);
+                       };
+                   },
+                   '退出': function(){
+                       closeDialog(dialogBox);
+                   },
+
+               },
+           });
+                
+}
+</script>
+     
+</body>
+</html>
